@@ -2,12 +2,13 @@
 /*
     Author : Ilan Hascal 
     Description:
-    Program is going to read input form stdin and print correspoinding relevant output from given JSON file (SystemViewController)
+    Program is going to read input from stdin and print correspoinding relevant output from given JSON file (SystemViewController)
 */
+import java.io.*;
 
 import java.util.*;
 import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.JSON;
 
 public class ilanCantina {
     public static void main(String[] args) {
@@ -20,4 +21,8 @@ public class ilanCantina {
         }
 
     }
+
+    JSONObject obj = new JSONObject(s);
+    JSONArray arr = obj.getJSONArray("NewStock");// get the array called NewStock
+
 }
