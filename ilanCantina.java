@@ -22,7 +22,7 @@ public class ilanCantina {
 
     }
 
-    JSONObject obj = new JSONObject(s);
-    JSONArray arr = obj.getJSONArray("NewStock");// get the array called NewStock
+    // JSONObject obj = new JSONObject(s);
+    // JSONArray arr = obj.getJSONArray("NewStock");// get the array called NewStock
 
 }
