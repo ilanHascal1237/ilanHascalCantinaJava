@@ -16,7 +16,7 @@ import jdk.nashorn.internal.parser.JSONParser;
 
 import org.json.JSON;
 
-public class ilanCantina {
+public class index {
     public static void main(String[] args) {
         JSONParser parser = new JSONParser();
 
