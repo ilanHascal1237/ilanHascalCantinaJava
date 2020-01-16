@@ -96,4 +96,25 @@ public class readsysview {
 
     }
 
+    public static void selectClasses(String line, JSONObject sys, String pattern) {
+        System.out.println("MATCHING VIEWS: " + recurseClasses(line, sys, pattern));
+    }
+
+    public static int recurseClasses(String line, JSONObject sys, String pattern) {
+        int viewsfound = 0;
+        for (Object o : sys.keySet()) {
+            if (sys.get(o) instanceof JSONArray) { // loop case
+                JSONArray ja = (JSONArray) sys.get(o);
+                for (Object n : ja.toArray()) {
+                    if (n instanceof JSONObject) {
+                        if (checkJSONObject(line, (JSONObject) n, pattern))
+                            viewsfound++;
+                        viewsfound += recurseClasses(line, (JSONObject) n, pattern);// keep searching
+                    }
+                }
+            }
+        }
+        return viewsfound;
+    }
+
 }
