@@ -24,6 +24,14 @@ import org.json.simple.parser.JSONParser;
 
 public class readsysview {
     public static void main(String[] args) {
+        Scanner consolereader = new Scanner(System.in);
+        System.out.print("Enter selector or [exit]: ");
+        while (!consoleinput.toLowerCase().equals("exit")) {
+            select(consoleinput, sys);
+            System.out.print("Enter selector or [exit]: ");
+            consoleinput = consolereader.nextLine();
+        }
+        consolereader.close();
         // url from gitHub
         String curl = "https://raw.githubusercontent.com/jdolan/quetoo/master/src/cgame/default/ui/settings/SystemViewController.json";
         String filename = "systemView.json";
