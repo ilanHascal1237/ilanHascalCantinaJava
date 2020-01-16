@@ -23,6 +23,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class readsysview {
+    /*
+     * Main method is prompting user with Scanner Class.
+     * 
+     * 
+     * 
+     */
     public static void main(String[] args) {
         Scanner consolereader = new Scanner(System.in);
         System.out.print("Enter selector or [exit]: ");
@@ -51,4 +57,43 @@ public class readsysview {
         }
 
     }
+
+    /*
+     * This method is going to identify what type of identifier the user inputs
+     */
+    public static void select(String line, JSONObject sys) {
+        if (line.contains(".")) {
+            // checking for classNames
+            // then removing the identifier
+            line = line.replace(".", "");
+            selectClasses(line, sys, "classNames");
+        } else if (line.contains("#")) {
+            // checking for an identifier
+            line = line.replace("#", "");
+            selectClasses(line, sys, "identifier");
+        } else {
+            // otherwise we know it is a class
+            selectClasses(line, sys, "class");
+        }
+
+    }
+
+    /*
+     * 
+     * Method uses the public gutHub link to fetch its contents
+     *
+     */
+    public static BufferedReader readFromGit(String curl) {
+        try {
+            URL url = new URL(curl);
+            URLConnection uc;
+            uc = url.openConnection();// fethcing
+            return new BufferedReader(new InputStreamReader(uc.getInputStream()));
+        } catch (IOException e) {
+            System.out.println("No Github resource found.");
+            return null;
+        }
+
+    }
+
 }
