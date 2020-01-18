@@ -36,20 +36,7 @@ public class readsysview {
         // url from gitHub
         String curl = "https://raw.githubusercontent.com/jdolan/quetoo/master/src/cgame/default/ui/settings/SystemViewController.json";
         String filename = "systemView.json";
-        BufferedReader reader = readFromGit(curl);
-        if (reader != null) {
-            try {
-                String line = null;
-                BufferedWriter filewriter = new BufferedWriter(new FileWriter(filename));
-                while ((line = reader.readLine()) != null) {
-                    filewriter.append(line + "\n");
-                }
-                filewriter.close();
-            } catch (IOException e) {
-                System.out.println("No JSON file found.");
-            }
-
-        }
+        writeJsonFile(curl, filename);
 
     }
 
@@ -178,6 +165,24 @@ public class readsysview {
         } catch (Exception e) {
             System.out.println("Could not parse json.");
             return null;
+        }
+
+    }
+
+    public static void writeJsonFile(String curl, String filename) {
+        BufferedReader reader = readFromGit(curl);
+        if (reader != null) {
+            try {
+                String line = null;
+                BufferedWriter filewriter = new BufferedWriter(new FileWriter(filename));
+                while ((line = reader.readLine()) != null) {
+                    filewriter.append(line + "\n");
+                }
+                filewriter.close();
+            } catch (IOException e) {
+                System.out.println("No JSON file found.");
+            }
+
         }
 
     }
