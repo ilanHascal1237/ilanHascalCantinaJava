@@ -156,6 +156,10 @@ public class readsysview {
         return false;
     }
 
+    /**
+     * @param filename - name of file
+     * @return - return the parse JSON
+     */
     public static JSONObject parseJson(String filename) {
         try {
             FileReader reader = new FileReader(new File(filename));
