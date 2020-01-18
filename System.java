@@ -33,6 +33,9 @@ public class readsysview {
 
     }
 
+    /**
+     * @param sys
+     */
     public static void repl(JSONObject sys) {
         Scanner consolereader = new Scanner(System.in);
         System.out.print("Enter selector or [exit]: ");
@@ -178,6 +181,11 @@ public class readsysview {
 
     }
 
+    /**
+     * @param curl     - url
+     * @param filename - name of file
+     * @return - return the parse JSON
+     */
     public static void writeJsonFile(String curl, String filename) {
         BufferedReader reader = readFromGit(curl);
         if (reader != null) {
