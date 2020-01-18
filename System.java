@@ -40,6 +40,18 @@ public class readsysview {
 
     }
 
+    public static void repl(JSONObject sys) {
+        Scanner consolereader = new Scanner(System.in);
+        System.out.print("Enter selector or [exit]: ");
+        String consoleinput = consolereader.nextLine();
+        while (!consoleinput.toLowerCase().equals("exit")) {
+            select(consoleinput, sys);
+            System.out.print("Enter selector or [exit]: ");
+            consoleinput = consolereader.nextLine();
+        }
+        consolereader.close();
+    }
+
     /**
      * @param line - is reading from the scanner
      * @param sys  -
