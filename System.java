@@ -23,12 +23,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class readsysview {
-    /*
-     * Main method is prompting user with Scanner Class.
-     * 
-     * 
-     * 
-     */
+
     public static void main(String[] args) {
         Scanner consolereader = new Scanner(System.in);
         System.out.print("Enter selector or [exit]: ");
@@ -58,12 +53,9 @@ public class readsysview {
 
     }
 
-    /*
-     * This method is going to identify what type of identifier the user inputs
-     */
     /**
-     * @param line
-     * @param sys
+     * @param line - is reading from the scanner
+     * @param sys  -
      */
     public static void select(String line, JSONObject sys) {
         if (line.contains(".")) {
@@ -82,14 +74,9 @@ public class readsysview {
 
     }
 
-    /*
-     * 
-     * Method uses the public gutHub link to fetch its contents
-     *
-     */
     /**
-     * @param curl
-     * @return
+     * @param curl - is the gitHub link tot he public repo
+     * @return - a BufferReader that can traverse the JSON
      */
     public static BufferedReader readFromGit(String curl) {
         try {
@@ -105,19 +92,19 @@ public class readsysview {
     }
 
     /**
-     * @param line
+     * @param line    - line the scanner is reading
      * @param sys
-     * @param pattern
+     * @param pattern - is the selector we are using
      */
     public static void selectClasses(String line, JSONObject sys, String pattern) {
         System.out.println("MATCHING VIEWS: " + recurseClasses(line, sys, pattern));
     }
 
     /**
-     * @param line
-     * @param sys
-     * @param pattern
-     * @return
+     * @param line    - line the scanner is reading
+     * @param sys     -
+     * @param pattern - is the selector we are using
+     * @return - number of iterations
      */
     public static int recurseClasses(String line, JSONObject sys, String pattern) {
         int viewsfound = 0;// keep track of how many we hace seen
@@ -141,10 +128,10 @@ public class readsysview {
     }
 
     /**
-     * @param line
-     * @param jo
-     * @param pattern
-     * @return
+     * @param line    - line we are reading form the scanner
+     * @param jo      - json object
+     * @param pattern - is the selector we are using
+     * @return - wether we are successfuly able to find the view
      */
     public static boolean checkJSONObject(String line, JSONObject jo, String pattern) {
         if (jo.containsKey(pattern)) {// if we see a familiar patter, error check
@@ -169,10 +156,10 @@ public class readsysview {
     }
 
     /**
-     * @param jarr
-     * @param viewname
-     * @param line
-     * @return
+     * @param jarr     - is the json array within the object
+     * @param viewname - is the type of selector we are woking with
+     * @param line     - is reading form the scanner
+     * @return - wether or not we have found the right view
      */
     public static boolean checkJSONArray(JSONArray jarr, Object viewname, String line) {
         if (jarr.contains(line)) { // seeing if they correpespons (pattern and the line we pass)
