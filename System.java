@@ -189,6 +189,7 @@ public class readsysview {
     public static void writeJsonFile(String curl, String filename) {
         BufferedReader reader = readFromGit(curl);
         if (reader != null) {
+            // try/catch to sucessfully check if writing to json is working
             try {
                 String line = null;
                 BufferedWriter filewriter = new BufferedWriter(new FileWriter(filename));
@@ -202,6 +203,55 @@ public class readsysview {
 
         }
 
+    }
+
+    public static void compundSelectFromClassNames(String viewname, String id, JSONObject sys) {
+        System.out.println("MATCHING VIEWS: " + recurseClassesCompound(viewname, id, "", sys));
+    }
+
+    public static void compoundSelectFromIdentifier(String viewname, String classname, JSONObject sys) {
+        System.out.println("MATCHING VIEWS: " + recurseClassesCompound(viewname, classname, "", sys));
+    }
+
+    public static int recurseClassesCompound(String viewname, String classname, String pattern, JSONObject sys) {
+        int viewsfound = 0;
+        for (Object o : sys.keySet()) {
+            if (sys.get(o) instanceof JSONArray) {
+                JSONArray ja = (JSONArray) sys.get(o);
+                for (Object n : ja.toArray()) {
+                    if (n instanceof JSONObject) {
+                        if (checkJSONObjectCompound(viewname, classname, pattern, (JSONObject) n))
+                            viewsfound++;
+                        viewsfound += recurseClassesCompound(viewname, classname, pattern, (JSONObject) n);
+                    }
+                }
+            } else if (sys.get(o) instanceof JSONObject) {
+                if (checkJSONObjectCompound(viewname, classname, pattern, (JSONObject) sys.get(o)))
+                    viewsfound++;
+                viewsfound += recurseClassesCompound(viewname, classname, pattern, (JSONObject) sys.get(o));
+            }
+        }
+        return viewsfound;
+    }
+
+    public static boolean checkJSONObjectCompound(String viewname, String filter, String pattern, JSONObject sys) {
+        if (sys.containsKey("class")) {
+            System.out.println("CLASS");
+            if (sys.containsKey(pattern)) {
+                System.out.println("PATTERN");
+                if (sys.get("class").equals(viewname)) {
+                    System.out.println("CORRECT CLASS");
+                    if (sys.get(pattern).equals(filter)) {
+                        System.out.println("CORRECT SECOND ARG");
+                        System.out.println("VIEW: " + viewname + "\n" + "JSON: ");
+                        System.out.println(sys);
+                        System.out.println();
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
 }
