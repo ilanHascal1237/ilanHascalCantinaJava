@@ -3,7 +3,7 @@
  * @author ILAN HASCAL Ilanhascal1237@gmail.com
  * 
  *         Program fetches SystemViewController.json , parses and then allows
- *         for stdin commands form the terminal
+ *         for stdin commands from the terminal
  * 
  */
 
@@ -22,7 +22,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class readsysview {
+public class System {
 
     public static void main(String[] args) {
         // url from gitHub
@@ -50,7 +50,7 @@ public class readsysview {
 
     /**
      * @param line - is reading from the scanner
-     * @param sys  -
+     * @param sys  - parsed josn object that is returned from parseJson
      */
     public static void select(String line, JSONObject sys) {
         if (line.contains(".")) {
@@ -65,23 +65,6 @@ public class readsysview {
         } else {
             // otherwise we know it is a class
             selectClasses(line, sys, "class");
-        }
-
-    }
-
-    /**
-     * @param curl - is the gitHub link tot he public repo
-     * @return - a BufferReader that can traverse the JSON
-     */
-    public static BufferedReader readFromGit(String curl) {
-        try {
-            URL url = new URL(curl);
-            URLConnection uc;
-            uc = url.openConnection();// fethcing
-            return new BufferedReader(new InputStreamReader(uc.getInputStream()));
-        } catch (IOException e) {
-            System.out.println("No Github resource found.");
-            return null;
         }
 
     }
@@ -120,6 +103,23 @@ public class readsysview {
             }
         }
         return viewsfound;
+    }
+
+    /**
+     * @param curl - is the gitHub link tot he public repo
+     * @return - a BufferReader that can traverse the JSON
+     */
+    public static BufferedReader readFromGit(String curl) {
+        try {
+            URL url = new URL(curl);
+            URLConnection uc;
+            uc = url.openConnection();// fethcing
+            return new BufferedReader(new InputStreamReader(uc.getInputStream()));
+        } catch (IOException e) {
+            System.out.println("No Github resource found.");
+            return null;
+        }
+
     }
 
     /**
