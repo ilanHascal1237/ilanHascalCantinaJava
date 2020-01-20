@@ -25,7 +25,7 @@ The program must support simple selectors for the following view attributes:
 **Design Choices:**
 
 1. Pulling from web - have never done this before in Java, so it was interesting to interact with the URL/BufferedReader class
-2. Modular method for selectors - wrote one method that processes either the view class name,CSS class names,or the view identifier (ln 
+2. Modular method for selectors - wrote one method that processes either the view class name,CSS class names,or the view identifier (ln 60-71 /src/readsysview.java)
 3. Verification of program - purposefully used an integer to keep track of how many views the program has traversed through
 
 **Execution of program:**
