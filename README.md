@@ -34,7 +34,7 @@ The program must support simple selectors for the following view attributes:
 
 2)Create a new workspace 
 
-3)```Drag and drop files``` from the cloned repo into the work space..make sure to replace any existing files with incoming ones
+3)```Drag and drop files``` from the cloned repo into the work space..make sure to replace any existing files with incoming ones such as **src & bin**
 
 4)Make sure that build path is configured with correct .jar file for org.JSON.simple package
 
