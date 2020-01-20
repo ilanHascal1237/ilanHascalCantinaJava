@@ -23,16 +23,21 @@ The program must support simple selectors for the following view attributes:
 3.     identifier - The view identifier, e.g. "#videoMode"
 
 Design Choices:
-1) Pulling from web - have never done this before in Java, so it was interesting to interact with the URL/BufferedReader class
-2) Modular method for selectors - wrote one method that processes either the view class name,CSS class names,or the view identifier (ln 
-3) Verification of program - purposefully used an integer to keep track of how many views the program has traversed through
+1. Pulling from web - have never done this before in Java, so it was interesting to interact with the URL/BufferedReader class
+2. Modular method for selectors - wrote one method that processes either the view class name,CSS class names,or the view identifier (ln 
+3. Verification of program - purposefully used an integer to keep track of how many views the program has traversed through
 
 Execution of program:
-1)Install Java JDK 13 & eclipse
+1.Install Java JDK 13 & eclipse
+
 2)Create a new workspace 
-3)```Drag and drop files``` from the cloned repo into the work space..make sure to replace any existing files with 
-  incoming ones
-4)Make sure that build path is configured with correct .jar file for org.JSON.simple package.
+
+3)```Drag and drop files``` from the cloned repo into the work space..make sure to replace any existing files with incoming ones
+
+4)Make sure that build path is configured with correct .jar file for org.JSON.simple package
+
 5)If so, ``right click`` on the project in package explorer
-6)Hover on ``Run As`` ``1 Java Application```
+
+6)Hover on ``Run As`` ``1 Java Application``
+
 7)Proceed to enter selectors into Console
