@@ -38,6 +38,6 @@ Execution of program:
 
 5)If so, ``right click`` on the project in package explorer
 
-6)Hover on ``Run As`` ``1 Java Application``
+6)Hover on ``Run As`` Click on ``1 Java Application``
 
 7)Proceed to enter selectors into Console
